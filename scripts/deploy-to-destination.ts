@@ -1,10 +1,10 @@
 const {ethers} = require("hardhat");
 const LZ_ENDPOINTS = require("../constants/layerzeroEndpoints.json")
-const CONSTANTS = require("../constants/index.js")
+const CONSTANTS = require("../constants/index.ts")
 require("dotenv").config({path: ".env"});
 
 async function main() {
-    const endpointNetworkName = CONSTANTS.ENDPOINT_NETWORK_NAME;
+    const endpointNetworkName = CONSTANTS.ENDPOINT_NETWORK_NAME_DESTINATION;
 
     const crossChainCounterContract = await ethers.getContractFactory(
         "CrossChainCounter"
@@ -12,7 +12,11 @@ async function main() {
 
     // get the Endpoint address
     const endpointAddr = LZ_ENDPOINTS[endpointNetworkName]
-    console.log(`[${endpointNetworkName}] Endpoint contract address: ${endpointAddr}`)
+    console.log(
+        `Deploying CrossChainCounter to destination chain [${endpointNetworkName}] \n`,
+        `[${endpointNetworkName}] Endpoint contract address: ${endpointAddr} \n`,
+            `Deploying... \n`
+    );
 
     // Deploy the contract with endpoint set to endpointNetworkName value
     const deployedOmniCounterContract = await crossChainCounterContract.deploy(endpointAddr);
@@ -20,8 +24,8 @@ async function main() {
     await deployedOmniCounterContract.deployed();
     // print the address of the deployed contract
     console.log(
-        "LZ OmniCounter Token Contract Address:",
-        deployedOmniCounterContract.address
+        `LZ CrossChainCounter deployed to destination chain [${endpointNetworkName}] Contract Address: ${deployedOmniCounterContract.address} \n`,
+        `View deployed contract on Polygonscan: https://mumbai.polygonscan.com/address/[${deployedOmniCounterContract.address}] \n`
     );
 }
 

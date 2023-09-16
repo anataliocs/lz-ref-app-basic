@@ -12,7 +12,7 @@ provide a developer with additional context while learning how to integrate with
 Some of these examples are simplified for the purpose of learning the basics of LZ Integration.  Please review
 the best practices section of the [docs for more context for a mainnet implementation](https://layerzero.gitbook.io/docs/evm-guides/best-practice).
 
-Base Interfaces and Util libraries are explictly included for easy reference.
+Base Interfaces and Util libraries are explictly included for easy reference in `/interfaces` and `\util`.
 
 The contracts in this repo are not currently audited and are intended for learning purposes.
 
@@ -30,24 +30,48 @@ Review the docs for context on [setting the endpoint for various chains](https:/
 
 Endpoints are defined locally in `/constants/layerzeroEndpoints.json`
 
-
-
 ### User Application Config
 
 Review the docs for additional context on [customizing your User Application Config](https://layerzero.gitbook.io/docs/evm-guides/ua-custom-configuration).
 
-Setting Trusted Remotes
+### Test Deployment Dry Run Locally
+
+Deploy to local forks as a dry run before deploying to testnet.  
+
+Install Ganache:
 ```
-npx hardhat --network goerli setTrustedRemote --target-network fuji --contract OmniCounter.sol
+npm install ganache --global
 ```
 
-### Local Deployment
+Ganache allows you to fork an existing chain such as Goerli or Mumbai.
 
-Start up a local node:
+Start up a local goerli node:
 ```shell
-npx hardhat node
+ganache --fork.url https://goerli.infura.io/v3/[YOUR API KEY]
 ```
 
+Start up a local Polygon Mumbai node:
 ```shell
-npx hardhat run --network localhost scripts/deploy.ts
+ganache --fork.url https://polygon-mumbai.infura.io/v3/[YOUR API KEY] --port 8446
 ```
+
+Deploy to local Goerli:
+```shell
+npx hardhat run --network localgoerli scripts/deploy-to-origin.ts
+```
+
+Deploy to local Mumbai:
+```shell
+npx hardhat run --network localmumbai scripts/deploy-to-destination.ts
+```
+
+### Deploy to Testnet
+
+Deploy to Goerli:
+```shell
+npx hardhat run --network goerli scripts/deploy-to-origin.ts
+```
+
+Deploy to Mumbai:
+```shell
+npx hardhat run --network mumbai scripts/deploy-to-destination.ts 
