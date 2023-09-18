@@ -23,6 +23,21 @@ Review `LzBaseApp` for more context on the implementation
 The contract `LzBaseApp` is an example LzReceiver blocking implementation that provides send and 
 receive functionality and an example User Application Config.
 
+### Setup your .env file
+
+Create your `.env` file:
+```
+touch .env
+```
+
+Update your `.env` file:
+```
+INFURA_GOERLI_URL=
+INFURA_MUMBAI_URL=
+
+PRIVATE_KEY=
+```
+
 ### Configuring your endpoint
 
 You can review the [interface for configuring an endpoint on Github](https://github.com/LayerZero-Labs/solidity-examples/blob/main/contracts/interfaces/ILayerZeroEndpoint.sol)
@@ -66,6 +81,8 @@ npx hardhat run --network localmumbai scripts/deploy-to-destination.ts
 ```
 
 ### Deploy to Testnet
+
+You will need testnet ETH to deploy.
 
 Deploy to Goerli:
 ```shell
