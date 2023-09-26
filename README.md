@@ -72,12 +72,12 @@ ganache --fork.url https://polygon-mumbai.infura.io/v3/[YOUR API KEY] --port 844
 
 Deploy to local Goerli:
 ```shell
-npx hardhat run --network localgoerli scripts/deploy-to-origin.ts
+npx hardhat run --network localgoerli scripts/deployToOrigin.ts
 ```
 
 Deploy to local Mumbai:
 ```shell
-npx hardhat run --network localmumbai scripts/deploy-to-destination.ts
+npx hardhat run --network localmumbai scripts/deployToDestination.ts
 ```
 
 ### Deploy to Testnet
@@ -86,12 +86,12 @@ You will need testnet ETH to deploy.
 
 Deploy to Goerli:
 ```shell
-npx hardhat run --network goerli scripts/deploy-to-origin.ts
+npx hardhat run --network goerli scripts/deployToOrigin.ts
 ```
 
 Deploy to Mumbai:
 ```shell
-npx hardhat run --network mumbai scripts/deploy-to-destination.ts 
+npx hardhat run --network mumbai scripts/deployToDestination.ts 
 ```
 
 ### Example Deployed Contract
@@ -102,6 +102,33 @@ https://mumbai.polygonscan.com/address/0x07426f3F1524cE7569f3856C703621A54c5e5eF
 Goerli: 0x78Ac0e9ABCC9296bB7c8FAa53336243157961C59
 https://goerli.etherscan.io/address/0x78Ac0e9ABCC9296bB7c8FAa53336243157961C59
 
+
+### Publish and Verify Source Code
+
+Add Etherscan API key to `.env`
+```
+ETHERSCAN_API_KEY=
+```
+
+Submit source code to Etherscan for origin contract on Goerli:
+```
+npx hardhat verify --network goerli 0x78Ac0e9ABCC9296bB7c8FAa53336243157961C59 '0xbfD2135BFfbb0B5378b56643c2Df8a87552Bfa23' 
+```
+
+
+
+Add Polygonscan API key to `.env`
+```
+POLYGONSCAN_API_KEY=
+```
+
+Submit source code to Polygonscan for destination contract on Mumbai:
+```
+npx hardhat verify --network mumbai 0x07426f3F1524cE7569f3856C703621A54c5e5eFc '0xf69186dfBa60DdB133E91E9A4B5673624293d8F8' 
+```
+
+Verified Contract Source Code example:  https://mumbai.polygonscan.com/address/0x07426f3F1524cE7569f3856C703621A54c5e5eFc#code
+
 ### Set Trusted Remote
 
 Example [script from solidity examples Github Repo](https://github.com/LayerZero-Labs/solidity-examples/blob/main/tasks/setTrustedRemote.js)
@@ -109,7 +136,7 @@ Example [script from solidity examples Github Repo](https://github.com/LayerZero
 Review the docs on [setting a trusted remote](https://layerzero.gitbook.io/docs/evm-guides/master/set-trusted-remotes) for more context.
 
 
-Setting a trusted remote:
+Setting a trusted remote in 40 byte format:
 ```typescript
 let trustedRemote = hre.ethers.utils.solidityPack(
     ['address','address'],
@@ -117,8 +144,12 @@ let trustedRemote = hre.ethers.utils.solidityPack(
 )
 ```
 
-Set trusted remotes to destination contract on Mumbai:
+Set trusted remotes on origin contract on Goerli:
 ```shell
-npx hardhat run --network mumbai scripts/setTrustedRemotes.ts 
+npx hardhat run --network goerli scripts/setTrustedRemoteOrigin.ts 
 ```
 
+Set trusted remotes on destination contract on Mumbai:
+```shell
+npx hardhat run --network mumbai scripts/setTrustedRemoteDestination.ts 
+```
