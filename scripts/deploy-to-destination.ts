@@ -24,8 +24,8 @@ async function main() {
     await deployedOmniCounterContract.deployed();
     // print the address of the deployed contract
     console.log(
-        `LZ CrossChainCounter deployed to destination chain [${endpointNetworkName}] Contract Address: ${deployedOmniCounterContract.address} \n`,
-        `View deployed contract on Polygonscan: https://mumbai.polygonscan.com/address/[${deployedOmniCounterContract.address}] \n`
+        `✅ LZ CrossChainCounter deployed to destination chain [${endpointNetworkName}] Contract Address: ${deployedOmniCounterContract.address} \n`,
+        `View deployed contract on Polygonscan: https://mumbai.polygonscan.com/address/${deployedOmniCounterContract.address} \n`
     );
 }
 

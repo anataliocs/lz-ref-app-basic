@@ -23,8 +23,8 @@ async function main() {
 
     await deployedOmniCounterContract.deployed();
     console.log(
-        `LZ CrossChainCounter deployed to origin chain [${endpointNetworkName}] Contract Address: ${deployedOmniCounterContract.address} \n`,
-        `View deployed contract on Etherscan: https://goerli.etherscan.io/address/[${deployedOmniCounterContract.address}] \n`
+        `✅ LZ CrossChainCounter deployed to origin chain [${endpointNetworkName}] Contract Address: ${deployedOmniCounterContract.address} \n`,
+        `View deployed contract on Etherscan: https://goerli.etherscan.io/address/${deployedOmniCounterContract.address} \n`
     );
 }
 

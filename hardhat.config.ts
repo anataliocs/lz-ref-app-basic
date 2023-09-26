@@ -16,11 +16,11 @@ module.exports = {
     },
     goerli: {
       url: INFURA_GOERLI_URL,
-      account: PRIVATE_KEY
+      accounts: [PRIVATE_KEY]
     },
     mumbai: {
       url: INFURA_MUMBAI_URL,
-      account: PRIVATE_KEY
+      accounts: [PRIVATE_KEY]
     },
   },
 };

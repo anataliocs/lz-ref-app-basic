@@ -26,7 +26,7 @@ receive functionality and an example User Application Config.
 ### Setup your .env file
 
 Create your `.env` file:
-```
+```shell
 touch .env
 ```
 
@@ -54,7 +54,7 @@ Review the docs for additional context on [customizing your User Application Con
 Deploy to local forks as a dry run before deploying to testnet.  
 
 Install Ganache:
-```
+```shell
 npm install ganache --global
 ```
 
@@ -92,3 +92,33 @@ npx hardhat run --network goerli scripts/deploy-to-origin.ts
 Deploy to Mumbai:
 ```shell
 npx hardhat run --network mumbai scripts/deploy-to-destination.ts 
+```
+
+### Example Deployed Contract
+
+Mumbai:  0x07426f3F1524cE7569f3856C703621A54c5e5eFc
+https://mumbai.polygonscan.com/address/0x07426f3F1524cE7569f3856C703621A54c5e5eFc
+
+Goerli: 0x78Ac0e9ABCC9296bB7c8FAa53336243157961C59
+https://goerli.etherscan.io/address/0x78Ac0e9ABCC9296bB7c8FAa53336243157961C59
+
+### Set Trusted Remote
+
+Example [script from solidity examples Github Repo](https://github.com/LayerZero-Labs/solidity-examples/blob/main/tasks/setTrustedRemote.js)
+
+Review the docs on [setting a trusted remote](https://layerzero.gitbook.io/docs/evm-guides/master/set-trusted-remotes) for more context.
+
+
+Setting a trusted remote:
+```typescript
+let trustedRemote = hre.ethers.utils.solidityPack(
+    ['address','address'],
+    [remoteContract.address, localContract.address]
+)
+```
+
+Set trusted remotes to destination contract on Mumbai:
+```shell
+npx hardhat run --network mumbai scripts/setTrustedRemotes.ts 
+```
+
