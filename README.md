@@ -116,7 +116,6 @@ npx hardhat verify --network goerli 0x78Ac0e9ABCC9296bB7c8FAa53336243157961C59 '
 ```
 
 
-
 Add Polygonscan API key to `.env`
 ```
 POLYGONSCAN_API_KEY=
@@ -127,7 +126,9 @@ Submit source code to Polygonscan for destination contract on Mumbai:
 npx hardhat verify --network mumbai 0x07426f3F1524cE7569f3856C703621A54c5e5eFc '0xf69186dfBa60DdB133E91E9A4B5673624293d8F8' 
 ```
 
-Verified Contract Source Code example:  https://mumbai.polygonscan.com/address/0x07426f3F1524cE7569f3856C703621A54c5e5eFc#code
+Verified Origin Contract Source Code on Goerli:  https://goerli.etherscan.io/address/0x78Ac0e9ABCC9296bB7c8FAa53336243157961C59#code
+
+Verified Destination Contract Source Code on Mumbai:  https://mumbai.polygonscan.com/address/0x07426f3F1524cE7569f3856C703621A54c5e5eFc#code
 
 ### Set Trusted Remote
 
@@ -149,7 +150,19 @@ Set trusted remotes on origin contract on Goerli:
 npx hardhat run --network goerli scripts/setTrustedRemoteOrigin.ts 
 ```
 
+Set Trusted Remote Transaction on origin contract on Goerli:  https://goerli.etherscan.io/tx/0x1f73668401fb710d7fd9a061962a673e878bc0e2d95bfe4bcdab3d05992bd355
+
 Set trusted remotes on destination contract on Mumbai:
 ```shell
 npx hardhat run --network mumbai scripts/setTrustedRemoteDestination.ts 
+```
+
+Set Trusted Remote Transaction on destination contract on Mumbai:  https://mumbai.polygonscan.com/tx/0x67380bd4cc11b66c6375e47a6be365647a763cd68950336df307e2cce9363314
+
+
+### Send Message from Origin to Destination
+
+Call increment counter on origin contract:
+```shell
+npx hardhat run --network goerli scripts/incrementCrossChainCounter.ts
 ```
