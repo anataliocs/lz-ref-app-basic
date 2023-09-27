@@ -3,23 +3,11 @@ const {ethers} = require("hardhat");
 async function main() {
     const dstChainId = '10109';
 
-   /*
-    let adapterParams = ethers.utils.solidityPack(
-        ["uint16", "uint", "uint", "address"],
-        [2, 200000, 55555555555, "0x07426f3F1524cE7569f3856C703621A54c5e5eFc"]
-
-    )*/
-
-    let adapterParams = ethers.utils.solidityPack(["uint16", "uint256"], [1, 200000]);
-
     const localContractAddressString = '0x78Ac0e9ABCC9296bB7c8FAa53336243157961C59';
 
     const localContractAddress = ethers.utils.getAddress(localContractAddressString);
 
     const goerliContractAddress = ethers.utils.getAddress('0xbfD2135BFfbb0B5378b56643c2Df8a87552Bfa23');
-
-    const goerliEndpoint = await ethers
-        .getContractAt("ILayerZeroEndpoint", goerliContractAddress);
 
     const localContractInstance = await ethers
         .getContractAt("CrossChainCounter", localContractAddress);
@@ -34,7 +22,7 @@ async function main() {
             10109,
             { value: fees[0], gasLimit: 9808960  }
         )
-    ).wait()
+    ).wait();
 
 
 

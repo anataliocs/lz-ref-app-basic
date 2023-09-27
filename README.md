@@ -162,6 +162,11 @@ Set Trusted Remote Transaction on destination contract on Mumbai:  https://mumba
 
 ### Send Message from Origin to Destination
 
+**Fee Estimation:**  When calling the `send()` method you must call `estimateFee()` on the endpoint deployed on your source chain
+and include the `fees[0]` value in the `msg.value` field in your `send()` transaction.
+
+NOTE:  Your `send()` and `estimateFee()` parameters such as source chain ID, payload and adapter parameters must be equivalent.
+
 Call increment counter on origin contract:
 ```shell
 npx hardhat run --network goerli scripts/incrementCrossChainCounter.ts

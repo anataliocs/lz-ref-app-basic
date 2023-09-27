@@ -29,7 +29,7 @@ contract CrossChainCounter is LzBaseApp {
     }
 
     function incrementCounter(uint16 _dstChainId) public payable {
-        _lzSend(_dstChainId, PAYLOAD, payable(msg.sender), address(0x0), bytes(""), msg.value);
+        _lzSend(_dstChainId, PAYLOAD, payable(msg.sender), address(0xF761d0581103FBD226F299Da8dc70FdE3Bd00B89), bytes("0x"), msg.value);
     }
 
     function setOracle(uint16 dstChainId, address oracle) external onlyOwner {
