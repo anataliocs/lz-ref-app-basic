@@ -14,7 +14,8 @@ the best practices section of the [docs for more context for a mainnet implement
 
 Base Interfaces and Util libraries are explictly included for easy reference in `/interfaces` and `\util`.
 
-The contracts in this repo are not currently audited and are intended for learning purposes.
+The contracts in this repo are not currently audited and are intended for learning purposes.  Do not directly use these code samples
+directly in a Mainnet application.
 
 ### Basic Blocking Implementation
 
@@ -105,6 +106,8 @@ https://goerli.etherscan.io/address/0x78Ac0e9ABCC9296bB7c8FAa53336243157961C59
 
 ### Publish and Verify Source Code
 
+Register for a free [Etherscan account and create an API key](https://etherscan.io/register).
+
 Add Etherscan API key to `.env`
 ```
 ETHERSCAN_API_KEY=
@@ -115,6 +118,7 @@ Submit source code to Etherscan for origin contract on Goerli:
 npx hardhat verify --network goerli 0x78Ac0e9ABCC9296bB7c8FAa53336243157961C59 '0xbfD2135BFfbb0B5378b56643c2Df8a87552Bfa23' 
 ```
 
+Register for a free [Polygonscan account and create an API key](https://polygonscan.com/register).
 
 Add Polygonscan API key to `.env`
 ```
